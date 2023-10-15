@@ -1,0 +1,18 @@
+﻿
+@model List<Product>
+@{
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var productt in Model)
+        {
+            <div class="col-md-4">
+                <partial name="_product" model="@productt" />
+            </div>
+        }
+
+    </div>
+</div> 

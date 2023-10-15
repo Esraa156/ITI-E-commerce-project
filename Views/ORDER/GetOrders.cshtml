@@ -1,0 +1,47 @@
+﻿@{
+    Layout = "_Layout";
+}
+@model List<bnm.Views.ViewModel.Order.OrderViewModel>
+
+@using System.Security.Claims;
+
+<h1>Hello  @User.Identity?.Name!</h1>
+<td><a href="/Home/Browse/" class="btn btn-outline-primary">Back to see products</a></td>
+@if (Model.Count == 0)
+{
+   
+}
+else
+{
+<table class="table">
+
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Date</th>
+            <th scope="col">Total Price</th>
+            
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.d</td>
+                <td>@p.totalprice</td>
+                <td>
+                   <a href="/ORDER/Details/@p.Id" class="btn btn-outline-primary" role="button" aria-pressed="true">Details</a>
+                </td>
+
+
+
+
+
+            </tr>
+
+        }
+    </tbody>
+</table>
+}

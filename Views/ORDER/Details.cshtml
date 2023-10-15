@@ -1,0 +1,33 @@
+﻿@model List<bnm.Views.ViewModel.CART.CC>
+@{
+    Layout = "_Layout";
+}
+<h1>Hi, this is your order detail!</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ProductId</th>
+            <th scope="col">ProductName</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Pic</th>
+            <th scope="col">TotalPrice</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.productId</td>
+                <td>@p.productname</td>
+                <td>@p.p</td>
+                <td>@p.q</td>
+                <td>
+                    <img src="/images/@p.pic" alt="Product Image" width="100" height="100" />
+                </td>
+                <td>@p.pq</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a href="/ORDER/GetOrders/" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back to your Orders</a>

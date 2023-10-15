@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+@model List<Cart>
+<h2>Shopping Cart</h2>
+@if (Model.Count == 0)
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <div style="width:90%;margin:auto" class="mt-2">
+
+    <table class="table table-striped">
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+
+            <th>Unit Price(INR)</th>
+            <th>Total Price</th>
+            <th>Action</th>
+            <th></th>
+
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">@item.ProductName</td>
+                <td class="align-middle">@item.Quantity</td>
+                <td class ="align-middle">@item.Price X @item.Quantity</td>
+
+                <td class="align-middle">@(item.Price*item.Quantity)</td>
+
+
+                <td>
+                    <a class="btn btn-info" href="/Cart/UpdateCart?productId=@item.ProductId&&quantity=1">+</a>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="/Cart/UpdateCart?productId=@item.ProductId&&quantity=-1">-</a>
+
+                </td>
+            </tr>
+        }
+    </table>
+
+    </div>
+    <div class="my-2">
+        <h5>Total price : </h5>
+        @(Model.Select(item => item.Price * item.Quantity).Sum())
+    </div>
+
+    <div class="my-2">
+        <a class="btn btn-info" href="/ORDER/Chekout">Checkout</a>
+    </div>
+
+
+   
+    <br />
+    <style type="text/css">
+        .CreateButton {
+            background: blue;
+            color: white;
+            padding: 4px 10px 4px 10px;
+            height: 30px;
+            width: 60px;
+        }
+
+    </style>
+    <br />
+   }
+<div class="my-2">
+    <a class="btn btn-info" href="/Home/Browse">Back to products</a>
+</div>
+

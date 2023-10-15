@@ -1,0 +1,39 @@
+﻿@model List<Product>
+@{
+    Layout = "_Layout";
+}
+
+<h1>Hello Admin</h1>
+<a href="/Product/Save/" class="btn btn-outline-primary">New</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Description</th>
+            <th scope="col">ImageUrl</th>
+           
+            <th scope="col">Quantity</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model)
+        {
+            <tr>
+                <td>@p.Id</td>
+                <td>@p.Name</td>
+                <td>@p.Price</td>
+                <td>@p.Description</td>
+                <td>@p.ImageUrl</td>
+                <td>@p.Quantity</td>
+                <td>
+                    <a href="/Product/Delete/@p.Id" class="btn btn-outline-danger">Delete</a>
+                    <a href="/Product/Edit/@p.Id" class="btn btn-outline-success">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
